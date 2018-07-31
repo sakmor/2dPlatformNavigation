@@ -5,6 +5,7 @@ using UnityEngine;
 public class Main : MonoBehaviour
 {
 	[SerializeField] private GameObject g;
+	[SerializeField] private Player Player;
 	// Use this for initialization
 	void Start()
 	{
@@ -19,11 +20,11 @@ public class Main : MonoBehaviour
 		if (Physics2D.Raycast(mousePoint, Vector2.zero)) return;
 
 		RaycastHit2D hit = Physics2D.Raycast(mousePoint, Vector2.down);
-		if (hit)
-		{
-			Vector3 pos = hit.point;
-			g.transform.position = pos;
-		}
+		if (hit == false) return;
+
+		Vector3 pos = hit.point;
+		g.transform.position = pos;
+		Player.MoveTo(pos);
 
 	}
 
