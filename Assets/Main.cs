@@ -6,6 +6,7 @@ public class Main : MonoBehaviour
 {
 	[SerializeField] private GameObject g;
 	[SerializeField] private Player Player;
+	[SerializeField] internal Collider2D Ladder;
 	// Use this for initialization
 	void Start()
 	{
@@ -23,8 +24,9 @@ public class Main : MonoBehaviour
 		if (hit == false) return;
 
 		Vector3 pos = hit.point;
+		if (Mathf.Abs(pos.y - Player.transform.position.y) <= 1) Player.MoveTo(pos);
+		if (Player.IsLadder) Player.MoveTo(pos);
 		g.transform.position = pos;
-		Player.MoveTo(pos);
 
 	}
 
