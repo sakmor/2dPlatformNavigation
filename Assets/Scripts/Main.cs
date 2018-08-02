@@ -7,6 +7,7 @@ public class Main : MonoBehaviour
 	[SerializeField] internal GameObject MoveCursor;
 	[SerializeField] private Player Player;
 	[SerializeField] internal Collider2D Ladder, Ground;
+
 	// Use this for initialization
 	void Start()
 	{
@@ -38,6 +39,12 @@ public class Main : MonoBehaviour
 		if (Mathf.Abs(pos.y - Player.transform.position.y) >= 1 && Player.IsLadder == false)
 		{
 			Player.ShowDialogICANT();
+			return;
+		}
+		if (Mathf.Abs(pos.y - Player.transform.position.y) >= 1 && Player.IsLadder == true)
+		{
+			Player.HideDialogICANT();
+			Player.MoveTo(pos, "Player@Back");
 			return;
 		}
 
