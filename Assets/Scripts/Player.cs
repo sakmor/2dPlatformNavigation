@@ -72,11 +72,13 @@ public class Player : MonoBehaviour
 	{
 		DialogLadder.SetActive(false);
 		DialogICANT.SetActive(true);
+		DialogICANT.GetComponent<Animator>().Play("Show");
 	}
 	internal void ShowDialogLadder()
 	{
 		DialogLadder.SetActive(true);
 		DialogICANT.SetActive(false);
+		DialogICANT.GetComponent<Animator>().Play("Show");
 	}
 	internal void HideDialogLadder()
 	{
